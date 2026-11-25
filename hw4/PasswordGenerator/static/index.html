@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Password Generator</title>
+<style>
+  :root { --accent:#1fb98a; --accent-d:#17a179; --bg:#0f1115; --card:#1b1f27; --line:#2b313c;
+          --text:#e8eaed; --muted:#9aa3af; --weak:#e24a4a; --medium:#e6a53e; --strong:#1fb98a; }
+  * { box-sizing: border-box; }
+  body { font-family: Arial, Helvetica, sans-serif; background: var(--bg); color: var(--text);
+         display: flex; justify-content: center; padding: 40px 16px; }
+  .card { background: var(--card); width: 100%; max-width: 620px; border-radius: 12px;
+          padding: 26px 28px; box-shadow: 0 6px 24px rgba(0,0,0,0.4); }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  p.sub { margin: 0 0 20px; color: var(--muted); font-size: 13px; }
+  .outRow { display: flex; gap: 10px; align-items: center; background:#0f1218; border:1px solid var(--line);
+            border-radius: 8px; padding: 10px 12px; }
+  #output { flex: 1; background: transparent; border: none; color: var(--text); font-size: 18px;
+            font-family: "Consolas", monospace; outline: none; letter-spacing: .5px; }
+  button { cursor: pointer; border: none; border-radius: 6px; font-size: 13px; }
+  .icon { background:#283040; color: var(--text); padding: 8px 10px; }
+  .copy { background: var(--accent); color: #06231b; font-weight: bold; padding: 9px 16px; }
+  .copy:hover { background: var(--accent-d); }
+  .meta { display: flex; justify-content: space-between; align-items: center; margin: 14px 2px 6px; font-size: 13px; }
+  #strength { font-weight: bold; }
+  #entropy { color: var(--muted); }
+  .bar { height: 8px; background:#0f1218; border-radius: 5px; overflow: hidden; margin-bottom: 20px; }
+  .barFill { height: 100%; width: 0; background: var(--accent); transition: width .15s, background .15s; }
+  .tabs { display: flex; gap: 8px; margin-bottom: 18px; }
+  .tab { flex:1; background:#283040; color: var(--muted); padding: 9px; border-radius: 6px; text-align:center; }
+  .tab.active { background: var(--accent); color:#06231b; font-weight: bold; }
+  .row { display:flex; align-items:center; justify-content: space-between; margin: 12px 0; }
+  label.lbl { font-size: 14px; }
+  input[type=range] { width: 60%; accent-color: var(--accent); }
+  .lenVal { min-width: 28px; text-align:right; font-weight:bold; }
+  .opts { display:grid; grid-template-columns: 1fr 1fr; gap: 10px 20px; margin-top: 10px; }
+  .opt { display:flex; align-items:center; gap: 8px; font-size: 14px; }
+  input[type=checkbox] { width:16px; height:16px; accent-color: var(--accent); }
+  input[type=text].sep { width: 54px; background:#0f1218; border:1px solid var(--line); color:var(--text);
+                         border-radius:6px; padding:6px; text-align:center; }
+  input.vfield { background:#0f1218; border:1px solid var(--line); color:var(--text);
+                 border-radius:6px; padding:8px 10px; font-size:14px; outline:none; }
+  input.vfield:focus { border-color: var(--accent); }
+  .vbtns { display:flex; gap:10px; margin:14px 0 6px; }
+  .btn-ghost { background:#283040; color: var(--text); padding: 9px 16px; }
+  .btn-ghost:hover { background:#333c4d; }
+  #vmsg { font-size:13px; min-height:18px; margin:4px 2px; }
+  #vmsg.ok { color: var(--strong); }
+  #vmsg.err { color: var(--weak); }
+  .vrow { display:flex; align-items:center; justify-content:space-between; gap:10px;
+          background:#0f1218; border:1px solid var(--line); border-radius:8px;
+          padding:10px 12px; margin-top:8px; }
+  .vlabel { font-weight:bold; font-size:14px; }
+  .vpw { font-family:"Consolas", monospace; color: var(--accent); font-size:14px; word-break:break-all; }
+  .vdate { color: var(--muted); font-size:12px; white-space:nowrap; }
+  .hidden { display:none; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h1>Password Generator</h1>
+    <p class="sub">A NordPass-style generator. Secrets are created on the backend with Python's CSPRNG.</p>
+
+    <div class="outRow">
+      <input id="output" readonly value="">
+      <button class="icon" id="regen" title="Generate a new one">&#x21bb;</button>
+      <button class="copy" id="copy">Copy</button>
+    </div>
+
+    <div class="meta">
+      <span>Password strength: <span id="strength">-</span></span>
+      <span id="entropy">Entropy: - bits</span>
+    </div>
+    <div class="bar"><div class="barFill" id="barFill"></div></div>
+
+    <div class="tabs">
+      <div class="tab active" id="tabRandom">Random Password</div>
+      <div class="tab" id="tabPhrase">Passphrase</div>
+      <div class="tab" id="tabVault">Vault</div>
+    </div>
+
+    <!-- Random password controls -->
+    <div id="randomControls">
+      <div class="row">
+        <label class="lbl">Length</label>
+        <input type="range" id="length" min="8" max="60" value="20">
+        <span class="lenVal" id="lengthVal">20</span>
+      </div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" id="upper" checked> Uppercase (A-Z)</label>
+        <label class="opt"><input type="checkbox" id="lower" checked> Lowercase (a-z)</label>
+        <label class="opt"><input type="checkbox" id="digits" checked> Digits (0-9)</label>
+        <label class="opt"><input type="checkbox" id="symbols" checked> Symbols (!@#$)</label>
+        <label class="opt"><input type="checkbox" id="avoidAmbiguous"> Avoid ambiguous</label>
+      </div>
+    </div>
+
+    <!-- Passphrase controls -->
+    <div id="phraseControls" class="hidden">
+      <div class="row">
+        <label class="lbl">Words</label>
+        <input type="range" id="words" min="3" max="8" value="4">
+        <span class="lenVal" id="wordsVal">4</span>
+      </div>
+      <div class="row">
+        <label class="lbl">Separator</label>
+        <input type="text" class="sep" id="separator" value="-" maxlength="3">
+      </div>
+      <div class="opts">
+        <label class="opt"><input type="checkbox" id="capitalize" checked> Capitalize words</label>
+        <label class="opt"><input type="checkbox" id="addNumber"> Add a number</label>
+      </div>
+    </div>
+
+    <!-- Secure vault controls -->
+    <div id="vaultControls" class="hidden">
+      <p class="sub" style="margin-top:0">
+        Saved passwords are encrypted on disk with a key derived from your master
+        password (PBKDF2-HMAC-SHA256 &rarr; AES). The master password is never stored.
+      </p>
+      <div class="row">
+        <label class="lbl">Master password</label>
+        <input type="password" class="vfield" id="master" placeholder="master password" style="width:230px">
+      </div>
+      <div class="row">
+        <label class="lbl">Label for this password</label>
+        <input type="text" class="vfield" id="vlabel" placeholder="e.g. Gmail" style="width:230px">
+      </div>
+      <div class="vbtns">
+        <button class="copy" id="vsave">Save current password</button>
+        <button class="btn-ghost" id="vunlock">Unlock &amp; show vault</button>
+      </div>
+      <p id="vmsg"></p>
+      <div id="vlist"></div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>

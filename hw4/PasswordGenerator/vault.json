@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "kdf": "PBKDF2-HMAC-SHA256",
+  "iterations": 200000,
+  "cipher": "Fernet (AES-128-CBC + HMAC-SHA256)",
+  "salt": "KEhunMf0RgImAgj5q4V0Uw==",
+  "verifier": "gAAAAABq80q3rdA4c8Jfq1B7FAlgO0J53rKkANb08pRorvdrmaeD7sySypPOeai7mNoEx9pirr6yBmiCc4mFsdHkzfSI66fXcA==",
+  "entries": [
+    {
+      "label": "passGen",
+      "password": "gAAAAABq80q32EqMb4c13Su1hVVFuMrd6AZZIGxz-ATnwMhqDX_TBHp4TQwcr7IEcfkSLt3DtK0gnUx-OCgD304bgP_AbtLJnq47fDrtqI7Y7jPlVrVYS1U=",
+      "created": "2026-11-10 16:47"
+    },
+    {
+      "label": "nordNew",
+      "password": "gAAAAABq81DtTqN_mnkY0K23pL9-ceTwVkFIQnWwSH-3j6O1dfFS0I6DtZ_2dQzDPXJK8777rqvIoUFeFHRzP9c-mx3dzpg6OqD3lwb9DurVO9NKwmVhBBWuSfcPwRTcJopAwj9BnKt5dkYUgiIJ98ef7w5w2uZmww==",
+      "created": "2026-11-10 17:14"
+    },
+    {
+      "label": "newPass",
+      "password": "gAAAAABq81L1DOdfLutVUm1KkYfsiaCVZ3XsKqqyEPAwVXuDId2afHHwbJojHY-8vQcXlxoBz8z4rtMkTZKDKna7voDBI4uMRQyVptdlw4bHSEqso2LwX9rvLTg1kgrpGHN9QQ9ibG4C",
+      "created": "2026-11-10 17:23"
+    },
+    {
+      "label": "pass",
+      "password": "gAAAAABq81Ob3v-GAPAa90JFv6KHyYKdFlZmknpiTWw4i_5PvzmH6BrVtt5OiAK-AzXv1m5of629Q6w4rGAuGK8rfirQAy7BdqfkewwNDGACA5djJ4NbFUY=",
+      "created": "2026-11-10 17:25"
+    },
+    {
+      "label": "clubPenguin",
+      "password": "gAAAAABq81l77Rsaqp0f0jY3-qXQJIV2qzRlBnW_hKsjoEcGVKBZ3K3xnFYfu9Mx0zou_LaEKRQkiRFiaFnFZKfFCk5zQy_e7ltT4wsbVa0QLpeDvvG0CpA=",
+      "created": "2026-11-10 17:50"
+    },
+    {
+      "label": "Kaleb",
+      "password": "gAAAAABq81wRP4ZY-uE5PwnfdxsD_1Q6MKzFXbmsLURnbOonQ0-rcFdlcFA7GARc2XW4FrC7swKRQAMVjxQonI6SQ_3xu-GZEhr6LtcpR9HE4QrWoi9NVn2c4CvTeWra0Gg77OCP59fK",
+      "created": "2026-11-10 18:01"
+    },
+    {
+      "label": "AP Exam",
+      "password": "gAAAAABq9fQosnh6k3C7tQxZ_xecJ_SDj1inl58D8zLmljVha8-QTe8N3kgRGoTupFTgXwEB9FmY7cMSRdQouV9-DzPRKlGuAqUv011Jj2ltNbmKCQjn0_I3R0xZmHdNUJWb35vSdstm",
+      "created": "2026-11-12 17:15"
+    },
+    {
+      "label": "testPass",
+      "password": "gAAAAABq9fXToYjPmgC88RhKAdArL6t3SoWquboimbB1C7Z9je27eImu-y6UH6FjyViv_f9MFtqIJE8wugqkbeL5xBCnYXHcYNejXZ18sjTh8AsIbSPNVsY=",
+      "created": "2026-11-12 17:22"
+    },
+    {
+      "label": "Noah",
+      "password": "gAAAAABq9fphJCq6ceI8oBhwd3QVMjnrek2-TpgHWm6JMzCAq0Jzmbxam96EgWDffA017fG9eaEkM67erCfGzePCbFsTjmuoIjzJUVThvFQhtd9u_JZ94GBaDEKUBmBAppJ10m3mbz86",
+      "created": "2026-11-12 17:41"
+    },
+    {
+      "label": "example.com",
+      "password": "gAAAAABq9f3h9iWE0u4QklIbHMfs-2XbQKyHYPR6Fc1dgTyb5QD0SH60iqEVPfgCvl2OnHA0-GvmYoZ3dJjAI4uhscLlJ8RbRdrXpQ-D-cD-XtSBoKL_8Ks=",
+      "created": "2026-11-12 17:56"
+    },
+    {
+      "label": "nordPass.com",
+      "password": "gAAAAABq9gCS9a60Dy9qPAZ9j07v1LpfhcsApIa9m5omns9dqsCvUdZ6VJ3BezKT1n6FEvLtprGVBGFXYLLzCR_14DyD_Ryt99uV-449yAFW-xorThxVJigE58wAU6cqAFt7VUs4ftiS",
+      "created": "2026-11-12 18:08"
+    },
+    {
+      "label": "JohnChernisky",
+      "password": "gAAAAABq9gF4ulXrW_o207dyNBHDlkkzcJcTl4aQMKE40v1fn8eHsmxhxKNy74HWTvIAE1WrtqdPxPQiD5blduWy-r78S5TAY5zgaZymc0-yNir_YFEdorw=",
+      "created": "2026-11-12 18:12"
+    },
+    {
+      "label": "nordExample",
+      "password": "gAAAAABq_IrdJilMw8YPAhxWJbL_-ZLZz3IvTFmcjErfUYjYxa9sH8l-IMc1xQvrND7lhkVtacxeYk5GxHVKQtZbQXFTo5ycIyj4pIVUvo9fTJtHcw64Glc=",
+      "created": "2026-11-17 17:11"
+    },
+    {
+      "label": "password1",
+      "password": "gAAAAABq_I5kuOZ1gZu0uCg6T2etF6N0BkIBwGlLrkpUEv4J4sK5EZiMzEhtJujuh7wY5YbUs5ZLoDH4d0IJccpvMN9rFVUpqmHydLqZdcurTf4jb8-O66cvGD2FbN--0BrZ_IJDcDpt",
+      "created": "2026-11-17 17:27"
+    },
+    {
+      "label": "figToast",
+      "password": "gAAAAABq_JMCxxxnIRpn8k0QPb9BARDQNjmTWjjxYNoY-EYaAKV0U6ByJMsJj4z81xVH5vjlR78Kvu-LR4iGNbt25FRZIG6PE6-67_08tUa-oc0dDDEygdgZP5Q7niqwpAedhuI8qRB9",
+      "created": "2026-11-17 17:46"
+    },
+    {
+      "label": "Urban Deer Lizard",
+      "password": "gAAAAABq_JTkVWCi7jLoYB4xU5cuEUHm_iF_KtuRyn0sKv8tZ4DgrR46NmBURmw235Ayu9yIcE28rSFNNTI3SvxTTEnF1WNtveS6wlY_Kzf5zGQkWsittrchbMUS7bOfRbmRsBNpSvE_",
+      "created": "2026-11-17 17:54"
+    },
+    {
+      "label": "ChiefBeaver",
+      "password": "gAAAAABq_JczpO12Hv2W_JW0SLT6GL8e-WrhTuIyAuE3DcIO0GQ3id4n5_FyRJEWlLxS0snyHgXwaOnnf9xCT-aUYA1_YWvhsmL-TXRRLfWTSHEsuXIi3PCHQxZGpWoVTkv9vyCEt0D6",
+      "created": "2026-11-17 18:04"
+    },
+    {
+      "label": "Ivory Stream",
+      "password": "gAAAAABq_Jj7X6EShoeNu-dq9gHIMZdjoeipX718lWEWwD1WtubRifo4XhGUhb7VaMtWnD4j3P11S8BldTPLE4EXbAumHRrU7npTj3XcnmVk2MYBYXnbUysQhs3oiIliigoB6AXCUdc6",
+      "created": "2026-11-17 18:12"
+    }
+  ]
+}
